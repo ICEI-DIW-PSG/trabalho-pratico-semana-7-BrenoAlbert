@@ -13,32 +13,49 @@ Leia o enunciado completo no Canvas.
 
 ## Informações Gerais
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Breno Albert Batista de Sá
+- Matricula: 902305
+- Proposta de projeto escolhida: 3. Organização e equipes
+- Breve descrição sobre seu projeto: Um site com a proposta de ser uma ferramenta para organização de cronogramas e agendas voltado para pessoas, grupos e organizações.
 
 ## Print da Home-Page
 
-<<  COLOQUE A IMAGEM AQUI >>
+![Home-Page](public/img/home.png)
 
 ## Print da página de detalhes do item
 
-<<  COLOQUE A IMAGEM AQUI >>
+![Detalhes](public/img/detalhes.png)
 
 ## Cole aqui abaixo a estrutura JSON utilizada no app.js
 
 ```javascript
 const dados = [
   {
-    "id": 1,
-    "titulo": "Prefeitura Lança Plano de Mobilidade Urbana",
-    "descricao": "Novo plano do transporte público.",
-    "conteudo": "A Prefeitura apresentou nesta segunda-feira um novo plano de mobilidade urbana.",
-    "categoria": "Cidades",
-    "autor": "Joana Ribeiro",
-    "data": "2025-03-30",
-    "imagem": "img/mobilidade.jpg"
+    id: 1,
+    imagem: "img/clipboard-list.png",
+    titulo: "Minha Lista",
+    categoria: "Lista de Tarefas",
+    data: "2025-03-30",
+    autor: "Usuário 123",
+    descricao: "Este template interativo te ajuda a organizar suas tarefas da forma mais dinâmica."
+  },
+  {
+    id: 2,
+    imagem: "img/people-group.png",
+    titulo: "Projetos Pessoais",
+    categoria: "Organização",
+    data: "2025-04-10",
+    autor: "Usuário 456",
+    descricao: "Planeje e acompanhe o progresso de seus projetos pessoais."
+  },
+  {
+    id: 3,
+    imagem: "img/clipboard-list.png",
+    titulo: "Estudos",
+    categoria: "Acadêmico",
+    data: "2025-05-01",
+    autor: "Usuário 789",
+    descricao: "Gerencie suas tarefas de estudo com praticidade."
   }
 ]
 ```
