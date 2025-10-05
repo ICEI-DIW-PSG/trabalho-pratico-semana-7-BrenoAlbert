@@ -28,28 +28,52 @@ const dados = [
   }
 ];
 
-$(document).ready(function () {
-  const container = $("#cards-container");
+// Lê o valor de um parâmetro da URL
+function getParametroUrl(nome) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(nome);
+}
 
-  dados.forEach(item => {
-    const card = `
-      <div class="col-12 col-sm-6 col-md-4 mb-4">
-        <div class="card board-card shadow-sm" data-id="${item.id}">
-          <a href="#">
-            <img src="${item.imagem}" class="img-fluid board-img" alt="${item.titulo}">
-          </a>
-          <div class="card-footer d-flex justify-content-between align-items-center">
-            <span>${item.titulo}</span>
-            <button class="btn btn-sm btn-outline-dark rounded-circle">★</button>
+$(document).ready(function () {
+  // Página inicial (index.html)
+  if ($("#cards-container").length) {
+    const container = $("#cards-container");
+
+    dados.forEach(item => {
+      const card = `
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="card board-card shadow-sm" data-id="${item.id}">
+            <a href="detalhes.html?id=${item.id}">
+              <img src="${item.imagem}" class="img-fluid board-img" alt="${item.titulo}">
+            </a>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span>${item.titulo}</span>
+              <button class="btn btn-sm btn-outline-dark rounded-circle">★</button>
+            </div>
           </div>
         </div>
-      </div>
-    `;
-    container.append(card);
-  });
+      `;
+      container.append(card);
+    });
+  }
 
-  $(document).on("click", ".board-card", function () {
-    const id = $(this).data("id");
-    window.location.href = `detalhes.html?id=${id}`;
-  });
+  // Página de detalhes (detalhes.html)
+  if ($("#item-titulo").length) {
+    const id = parseInt(getParametroUrl("id"));
+    const item = dados.find(d => d.id === id);
+
+    if (item) {
+      $("#item-imagem").attr("src", item.imagem);
+      $("#item-titulo").text(item.titulo);
+      $("#item-info").text(`${item.categoria} • ${item.data} • ${item.autor}`);
+      $("#item-descricao").text(item.descricao);
+    } else {
+      $("main").html("<h4 class='text-center text-danger'>Item não encontrado.</h4>");
+    }
+
+    // Botão voltar
+    $("#btn-voltar").on("click", function () {
+      window.location.href = "index.html";
+    });
+  }
 });
